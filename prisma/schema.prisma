@@ -1,0 +1,119 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         String    @id @default(auto()) @map("_id") @db.ObjectId
+  firstName  String
+  lastName   String
+  email      String    @unique
+  password   String
+  phoneNum   String
+  profilePic String?
+  verified   Boolean   @default(false)
+  Customer   Customer?
+  Manager    Manager?
+  Driver     Driver?
+}
+
+model Customer {
+  id     String  @id @default(auto()) @map("_id") @db.ObjectId
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String  @unique @db.ObjectId
+  orders Order[]
+}
+
+model Manager {
+  id          String       @id @default(auto()) @map("_id") @db.ObjectId
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String       @unique @db.ObjectId
+  restaurants Restaurant[]
+}
+
+model Driver {
+  id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  user           User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId         String    @unique @db.ObjectId
+  licenseNum     String
+  carDescription String?
+  available      Boolean   @default(false)
+  driving        Boolean   @default(false)
+  location       Location?
+  rating         Rating
+  orders         Order[]
+}
+
+model Restaurant {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  manager     Manager  @relation(fields: [managerId], references: [id])
+  managerId   String   @db.ObjectId
+  name        String
+  description String?
+  image       String?
+  location    Location
+  rating      Rating
+  reviews     Review[]
+  tags        Tag[]
+  dishes      Dish[]
+  orders      Order[]
+}
+
+model Order {
+  id           String     @id @default(auto()) @map("_id") @db.ObjectId
+  customer     Customer   @relation(fields: [customerId], references: [id])
+  customerId   String     @db.ObjectId
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
+  restaurantId String     @db.ObjectId
+  driver       Driver     @relation(fields: [driverId], references: [id])
+  driverId     String     @db.ObjectId
+  made         Boolean    @default(false)
+  delivered    Boolean    @default(false)
+}
+
+// Location is an embedded document
+type Location {
+  latitude  Float
+  longitude Float
+}
+
+// Rating is an embedded document
+type Rating {
+  totalRating Int @default(5)
+  numRating   Int @default(1)
+}
+
+type Review {
+  customerId String @db.ObjectId
+  comment    String
+}
+
+type Dish {
+  name        String
+  description String?
+  image       String?
+  tags        Tag[]
+  ingredients String[]
+  price       Float
+}
+
+enum Tag {
+  Vegan
+  Vegitarian
+  Pescaterian
+  Protien
+  Dessert
+  Main_Course
+  Appetizer
+  Gluten_Free
+}
