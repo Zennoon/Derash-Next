@@ -5,4 +5,4 @@ export type User = {
   password: string;
   phoneNum: string;
   profilePic: string;
-}
+};
