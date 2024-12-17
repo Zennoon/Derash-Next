@@ -7,7 +7,6 @@ const CustomerRegisterForm = () => {
     errors: {},
     message: null,
   }
-
   const [state, formAction, pending] = useActionState(createCustomer, initialState);
 
   return (
