@@ -67,7 +67,6 @@ export const options: NextAuthOptions = {
   ],
   callbacks: {
     async signIn({ user }) {
-      return true;
       if (user) {
         const dbUser = await prisma.user.findFirst({
           where: {
@@ -77,7 +76,7 @@ export const options: NextAuthOptions = {
 
         if (dbUser) {
           if (dbUser.verified) return true;
-          return `/authorize?email=${dbUser.email}`
+          return `/authenticate?email=${dbUser.email}`
         }
       }
       return false; 
