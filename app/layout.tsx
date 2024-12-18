@@ -1,20 +1,9 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
-
 import AuthProvider from "@/components/providers/AuthProvider";
 import ThemeProvder from "@/components/providers/ThemeProvder";
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+import { inter } from "./fonts";
+import NavBar from "@/components/ui/NavBar";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -28,20 +17,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <AuthProvider>
-        <ThemeProvder
-          attribute='class'
-          defaultTheme='system'
-          enableSystem
-          disableTransitionOnChange
-        >
-          <body
-            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      <body
+        className={`${inter.className} antialiased w-full h-full`}
+        style={{
+          background: 'radial-gradient(circle, rgba(13,13,13,1) 0%, rgba(57,16,16,1) 0%, rgba(23,22,22,1) 100%, rgba(49,64,68,1) 100%)'
+        }}
+      >
+        <AuthProvider>
+          <ThemeProvder
+            attribute='class'
+            defaultTheme='system'
+            enableSystem
+            disableTransitionOnChange
           >
+            <NavBar />
             {children}
-          </body>
-        </ThemeProvder>
-      </AuthProvider>
+          </ThemeProvder>
+        </AuthProvider>
+      </body>
     </html>
   );
 }
