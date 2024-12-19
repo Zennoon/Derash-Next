@@ -7,7 +7,7 @@ const NextThemesProvider = dynamic(
 		ssr: false,
 	}
 )
-const ThemeProvder = ({children, ...props}: React.ComponentProps<typeof NextThemesProvider>) => {
+const ThemeProvider = ({children, ...props}: React.ComponentProps<typeof NextThemesProvider>) => {
   return (
     <NextThemesProvider {...props}>
       { children }
@@ -15,4 +15,4 @@ const ThemeProvder = ({children, ...props}: React.ComponentProps<typeof NextThem
   )
 }
 
-export default ThemeProvder
+export default ThemeProvider
