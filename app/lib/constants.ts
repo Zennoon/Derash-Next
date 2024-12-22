@@ -16,6 +16,10 @@ export const navItems = [
     href: '#'
   },
   {
+    label: 'Contact',
+    href: '/#contact'
+  },
+  {
     label: 'Sign up',
     href: '/register',
     onlyMobile: true,

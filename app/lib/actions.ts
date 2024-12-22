@@ -19,21 +19,30 @@ export type CustomerState = {
     profilePic?: string[] | undefined
   };
   message?: string | null;
+  values?: {
+    firstName: string | undefined;
+    lastName: string | undefined;
+    email: string | undefined;
+    password: string | undefined;
+    phoneNum: string | undefined;
+  }
 }
 
 export async function createCustomer(prevState: CustomerState, formData: FormData) {
-  const validationFields = UserSchema.safeParse({
-    firstName: formData.get('firstName'),
-    lastName: formData.get('lastName'),
-    email: formData.get('email'),
-    password: formData.get('password'),
-    phoneNum: formData.get('phoneNum')
-  });
+  const values = {
+    firstName: formData.get('firstName')?.toString(),
+    lastName: formData.get('lastName')?.toString(),
+    email: formData.get('email')?.toString(),
+    password: formData.get('password')?.toString(),
+    phoneNum: formData.get('phoneNum')?.toString()
+  }
+  const validationFields = UserSchema.safeParse(values);
 
   if (!validationFields.success) {
     return {
       errors: validationFields.error.flatten().fieldErrors,
-      message: 'Missing fields. Failed to register customer'
+      message: 'Missing fields. Failed to register customer',
+      values
     }
   }
   const { firstName, lastName, email, password, phoneNum } = validationFields.data;
@@ -46,8 +55,11 @@ export async function createCustomer(prevState: CustomerState, formData: FormDat
 
   if (existingUser) {
     return {
-      errors: {},
+      errors: {
+        email: ['This email is already registered.']
+      },
       message: 'The email is already registered.',
+      values
     }
   }
 
@@ -72,7 +84,8 @@ export async function createCustomer(prevState: CustomerState, formData: FormDat
   } catch (error) {
     return {
       errors: {},
-      message: ''
+      message: '',
+      values
     }
   }
   redirect('/');

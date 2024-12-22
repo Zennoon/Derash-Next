@@ -30,7 +30,7 @@ const ChooseAccountPage = () => {
               </div>
               <div className='space-y-5'>
                 {accountType.features.map((feature, i) => (
-                  <p className='flex items-center gap-3 text-sm font-light text-n-2'><CheckCircle className='w-5 h-5'/><span>{feature}</span></p>
+                  <p key={i} className='flex items-center gap-3 text-sm font-light text-n-2'><CheckCircle className='w-5 h-5'/><span>{feature}</span></p>
                 ))}
               </div>
             </div>

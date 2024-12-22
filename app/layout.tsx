@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import AuthProvider from "@/components/providers/AuthProvider";
-import { inter } from "./fonts";
+import { dosis } from "./fonts";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} antialiased w-full h-full`}
+        className={`${dosis.className} antialiased w-full h-full min-h-full overflow-x-hidden`}
         style={{
           background: 'radial-gradient(circle, rgba(13,13,13,1) 0%, rgba(57,16,16,1) 0%, rgba(23,22,22,1) 100%, rgba(49,64,68,1) 100%)'
         }}

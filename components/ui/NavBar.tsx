@@ -9,6 +9,7 @@ import { navItems } from '@/app/lib/constants';
 import MenuSvg from './MenuSvg';
 import Link from 'next/link';
 import LitButton from './LitButton';
+import Avatar from './Avatar';
 
 const NavBar = () => {
   const pathname = usePathname();
@@ -63,7 +64,9 @@ const NavBar = () => {
         </nav>
         <div className='mr-8 lg:text-sm hidden text-n-1/50 lg:flex items-center gap-6'>
           {session ? (
-            <Link href="/logout" className='hover:text-n-1 transition-colors'>Log out</Link>
+            <Link href="/logout" className='transition duration-200 hover:scale-110'>
+              <Avatar src={session.user.image} />
+            </Link>
           ) : (
             <>
               <Link
