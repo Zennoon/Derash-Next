@@ -1,12 +1,12 @@
 'use client'
-import { createCustomer, CustomerState } from "@/app/lib/actions";
+import { createCustomer, CustomerManagerState } from "@/app/lib/actions";
 import { useActionState } from "react";
 import PhoneNumberInput from "./PhoneNumberInput";
 import LitButton from "./LitButton";
 import { Triangle } from 'react-loader-spinner';
 
 const CustomerRegisterForm = () => {
-  const initialState: CustomerState = {
+  const initialState: CustomerManagerState = {
     errors: {},
     message: null,
     values: {
