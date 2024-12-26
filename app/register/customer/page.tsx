@@ -1,4 +1,5 @@
-import { dosis } from "@/app/fonts"
+import { foodImages } from "@/app/lib/constants"
+import AnimatedFoods from "@/components/ui/AnimatedFoods"
 import CustomerRegisterForm from "@/components/ui/CustomerRegisterForm"
 import Image from "next/image"
 import Link from "next/link"
@@ -6,7 +7,7 @@ import Link from "next/link"
 const CustomerRegisterPage = () => {
   return (
     <div className="h-[100%] min-h-full w-[100vw] bg-n-1 text-black flex">
-      <div className={`min-h-screen h-[100%] lg:w-[50%] p-4 flex flex-col items-center justify-between overflow-hidden`}>
+      <div className={`min-h-screen h-[100%] lg:w-[50%] lg:p-4 p-10 flex flex-col items-center justify-between overflow-hidden`}>
         <div className="self-start flex gap-3 border-t border-b ml-5 pt-1 pb-1">
           <Image
             src='/derash-logo.png'
@@ -17,10 +18,9 @@ const CustomerRegisterPage = () => {
           <h5 className={`h5 text-n-5 antialiased`}>Derash</h5>
         </div>
         <CustomerRegisterForm />
-        <p className="">Already have an account? <Link href='/login' className="text-indigo-500 hover:text-purple-500 transition-colors duration-100 font-semibold">Sign in</Link></p>
+        <p className="self-center">Already have an account? <Link href='/login' className="text-indigo-500 hover:text-purple-500 transition-colors duration-100 font-semibold">Sign in</Link></p>
       </div>
-      <div className="hidden lg:block bg-black flex-1">
-      </div>
+      <AnimatedFoods />
     </div>
   )
 }

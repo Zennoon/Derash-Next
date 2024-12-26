@@ -1,13 +1,24 @@
 'use client';
+import { useRouter } from 'next/navigation';
 import { sendAuthEmail } from '@/app/lib/actions';
+import LitButton from './LitButton';
+import { Mail } from 'lucide-react';
 
 type SendAuthEmailButtonProps = {
-  email: string
+  email: string;
+  firstName: string;
 }
 
-const SendAuthEmailButton = ({email}: SendAuthEmailButtonProps) => {
+const SendAuthEmailButton = ({email, firstName}: SendAuthEmailButtonProps) => {
+  const router = useRouter();
   return (
-    <button onClick={async () => await sendAuthEmail(email)}>Send Authentication Email</button>
+    <LitButton onClick={async () => { 
+      await sendAuthEmail(email, firstName);
+      router.push('/authenticate/sent');
+    }} className='flex gap-2'>
+      <Mail size={24} />
+      Send Authentication Email
+    </LitButton>
   )
 }
 

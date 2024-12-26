@@ -26,7 +26,7 @@ const ChooseAccountPage = () => {
               </div>
               <p className='pb-4 border-b border-n-4 font-extralight'>{accountType.tagline}</p>
               <div className='flex justify-center align-center p-10 border-b border-n-4 mb-10'>
-                <LitButton href={accountType.href} label='Choose'></LitButton>
+                <LitButton href={accountType.href}>Choose</LitButton>
               </div>
               <div className='space-y-5'>
                 {accountType.features.map((feature, i) => (

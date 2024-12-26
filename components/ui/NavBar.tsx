@@ -77,8 +77,7 @@ const NavBar = () => {
               </Link>
               <LitButton
                 href='/login'
-                label='Sign in'
-              />
+              >Sign up</LitButton>
             </> 
           )}
         </div>

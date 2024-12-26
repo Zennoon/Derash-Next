@@ -5,7 +5,7 @@ import { UserSchema } from "./schemas";
 import { redirect } from 'next/navigation';
 import { Resend } from 'resend';
 import { generateAuthToken } from '../utils';
-import AuthToken from '@/components/emails/AuthTokenTemplate';
+import DerashAuthEmail from '@/components/emails/AuthTokenTemplate';
 
 const resend = new Resend(process.env['RESEND_API_KEY']);
 
@@ -80,18 +80,19 @@ export async function createCustomer(prevState: CustomerState, formData: FormDat
       data: {
         userId: user.id,
       }
-    })
+    });
+    await sendAuthEmail(email, firstName);
   } catch (error) {
     return {
       errors: {},
-      message: '',
+      message: 'An error occurred. Failed to register customer',
       values
     }
   }
-  redirect('/');
+  redirect('/authenticate/sent');
 }
 
-export async function sendAuthEmail(email: string) {
+export async function sendAuthEmail(email: string, firstName: string) {
   const token = await generateAuthToken(email);
 
   if (!token) {
@@ -102,7 +103,7 @@ export async function sendAuthEmail(email: string) {
       from: 'Acme <onboarding@resend.dev>',
       to: [email],
       subject: 'Authenticate your Derash Account',
-      react: AuthToken(token)
+      react: DerashAuthEmail({userFirstname: firstName, token})
     });
   } catch (error) {
     return null;

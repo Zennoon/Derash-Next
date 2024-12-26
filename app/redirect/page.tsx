@@ -1,5 +1,5 @@
 import { getServerSession } from "next-auth";
-import { redirect, RedirectType } from "next/navigation";
+import { redirect } from "next/navigation";
 import { options } from "../api/auth/[...nextauth]/options";
 
 const RedirectPage = async () => {
@@ -11,7 +11,7 @@ const RedirectPage = async () => {
     else if (session.user.role === 'driver') redirect('/d/dashboard');
     else redirect('/');
   }
-  redirect('/signin');
+  redirect('/register');
   return (
     <div>Redirecting</div>
   )

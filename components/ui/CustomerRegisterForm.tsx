@@ -3,6 +3,7 @@ import { createCustomer, CustomerState } from "@/app/lib/actions";
 import { useActionState } from "react";
 import PhoneNumberInput from "./PhoneNumberInput";
 import LitButton from "./LitButton";
+import { Triangle } from 'react-loader-spinner';
 
 const CustomerRegisterForm = () => {
   const initialState: CustomerState = {
@@ -18,11 +19,9 @@ const CustomerRegisterForm = () => {
   }
   const [state, formAction, pending] = useActionState(createCustomer, initialState);
 
-  console.log(state);
-
   return (
     <div className="flex flex-col gap-4 min-w-[50%]">
-      <h4 className="h4">Start your journey</h4>
+      <h4 className="h4 border-b pb-1">Start your journey</h4>
       <p className="text-n-5">Create a customer account.</p>
       <form action={formAction}>
         <div className="flex flex-col gap-3">
@@ -31,8 +30,8 @@ const CustomerRegisterForm = () => {
               <label htmlFor="firstName">First name</label>
               <input type="text" id="firstName" name="firstName" placeholder="John" className={`bg-white border p-1 rounded-md outline-none focus:outline-indigo-900 ${state?.errors?.firstName && 'border-red-500'}`} aria-describedby="firstName-error" defaultValue={state?.values?.firstName} />
               <div id="firstName-error" aria-live="polite" aria-atomic='true'>
-                { state.errors?.firstName &&
-                    state.errors.firstName.map((error: string) => (
+                { state?.errors?.firstName &&
+                    state?.errors.firstName.map((error: string) => (
                       <p className="text-sm text-red-500" key={error}>{error}</p>
                     )) }
               </div>
@@ -41,8 +40,8 @@ const CustomerRegisterForm = () => {
               <label htmlFor="lastName">Last name</label>
               <input type="text" id="lastName" name="lastName" placeholder="Doe" className={`bg-white border p-1 rounded-md outline-none focus:outline-indigo-900 ${state?.errors?.lastName && 'border-red-500'}`} aria-describedby="lastName-error" defaultValue={state?.values?.lastName} />
               <div id="lastName-error" aria-live="polite" aria-atomic='true'>
-                { state.errors?.lastName &&
-                    state.errors.lastName.map((error: string) => (
+                { state?.errors?.lastName &&
+                    state?.errors.lastName.map((error: string) => (
                       <p className="text-sm text-red-500" key={error}>{error}</p>
                     )) }
               </div>
@@ -52,8 +51,8 @@ const CustomerRegisterForm = () => {
             <label htmlFor="email">Email</label>
             <input type="email" id="email" name="email" placeholder="johnDoe@email.com" className={`bg-white border p-1 rounded-md outline-none focus:outline-indigo-900 ${state?.errors?.email && 'border-red-500'}`} aria-describedby="email-error" defaultValue={state?.values?.email} />
             <div id="email-error" aria-live="polite" aria-atomic='true'>
-              { state.errors?.email &&
-                  state.errors.email.map((error: string) => (
+              { state?.errors?.email &&
+                  state?.errors.email.map((error: string) => (
                     <p className="text-sm text-red-500" key={error}>{error}</p>
                   )) }
             </div>
@@ -62,8 +61,8 @@ const CustomerRegisterForm = () => {
             <label htmlFor="password">Password</label>
             <input type="password" id="password" name="password" placeholder="********" className={`bg-white border p-1 rounded-md outline-none focus:outline-indigo-900 ${state?.errors?.password && 'border-red-500'}`} aria-describedby="password-error" defaultValue={state?.values?.password} />
             <div id="password-error" aria-live="polite" aria-atomic='true'>
-              { state.errors?.password &&
-                  state.errors.password.map((error: string) => (
+              { state?.errors?.password &&
+                  state?.errors.password.map((error: string) => (
                     <p className="text-sm text-red-500" key={error}>{error}</p>
                   )) }
             </div>
@@ -72,13 +71,16 @@ const CustomerRegisterForm = () => {
             <label htmlFor="phoneNum">Phone number</label>
             <PhoneNumberInput id="phoneNum" name='phoneNum' className={`relative h-[100%] ${state?.errors?.phoneNum && 'border-red-500'}`} />
             <div id="phoneNum-error" aria-live="polite" aria-atomic='true'>
-              { state.errors?.phoneNum &&
-                  state.errors.phoneNum.map((error: string) => (
+              { state?.errors?.phoneNum &&
+                  state?.errors.phoneNum.map((error: string) => (
                     <p className="text-sm text-red-500" key={error}>{error}</p>
                   )) }
             </div>
           </div>
-          <LitButton label="Register" className="self-center" type="submit">Register</LitButton>
+          <LitButton className="self-center" type="submit" disabled={pending}>
+            <span>Register</span> 
+            {pending ? <Triangle color="white" height="20" width="20" /> : null}
+          </LitButton>
         </div>
       </form>
     </div>

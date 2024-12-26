@@ -75,3 +75,38 @@ export const accountTypes = [
   }
 ]
 
+export const foodImages = [
+  {
+    href: '/chicken-cartoon.png',
+    label: 'Cartoon chicken'
+  },
+  {
+    href: '/fruit-punch.png',
+    label: 'Cartoon fruit punch'
+  },
+  {
+    href: '/avocado-cartoon.png',
+    label: 'Cartoon avocado'
+  },
+  {
+    href: '/burger.png',
+    label: 'Cartoon burger'
+  },
+  {
+    href: '/lemonade-cartoon.png',
+    label: 'Cartoon lemonade'
+  },
+  {
+    href: '/pizza.png',
+    label: 'Cartoon pizza'
+  },
+  {
+    href: '/salad-cartoon.png',
+    label: 'Cartoon salad'
+  },
+  {
+    href: '/watermelon-cartoon.png',
+    label: 'Cartoon watermelon'
+  }
+]
+
