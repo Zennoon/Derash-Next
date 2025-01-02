@@ -110,3 +110,20 @@ export const foodImages = [
   }
 ]
 
+export const authProviders = [
+  {
+    name: 'Google',
+    id: 'google',
+    icon: '/google-icon.png'
+  },
+  {
+    name: 'Facebook',
+    id: 'facebook',
+    icon: '/facebook-icon.png'
+  },
+  {
+    name: 'Twitter',
+    id: 'twitter',
+    icon: '/twitter-icon.png'
+  }
+];

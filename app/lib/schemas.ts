@@ -21,6 +21,6 @@ export const DriverSchema = z.object({
   password: z.string().min(8, 'Password must be at least 8 characters long.'),
   phoneNum: z.string().refine(isMobilePhone, 'Please input a valid phone number.'),
   licenseNum: z.string().length(6, 'Please provide a valid license number.').refine(validateLicenseNum),
-  carDescription: z.string().optional(),
+  carDescription: z.string().min(16, 'Car description must be at least 20 characters long').max(255, 'Car description must be less than 255 characters.'),
   profilePic: z.string().optional()
 })

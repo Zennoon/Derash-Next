@@ -16,7 +16,6 @@ const PhoneNumberInput = ({ id, name, className }: {
       value={phoneNum}
       onChange={(phoneNum) => setPhoneNum(phoneNum)}
       name={name}
-      className={className}
     />
   )
 }

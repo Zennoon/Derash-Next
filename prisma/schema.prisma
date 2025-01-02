@@ -48,7 +48,7 @@ model Driver {
   user           User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId         String    @unique @db.ObjectId
   licenseNum     String
-  carDescription String?
+  carDescription String
   available      Boolean   @default(false)
   driving        Boolean   @default(false)
   location       Location?

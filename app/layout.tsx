@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import AuthProvider from "@/components/providers/AuthProvider";
 import { dosis } from "./fonts";
+import ThemeProvider from "@/components/providers/ThemeProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,12 +18,18 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${dosis.className} antialiased w-full h-full min-h-full overflow-x-hidden`}
-        style={{
-          background: 'radial-gradient(circle, rgba(13,13,13,1) 0%, rgba(57,16,16,1) 0%, rgba(23,22,22,1) 100%, rgba(49,64,68,1) 100%)'
-        }}
       >
         <AuthProvider>
-          {children}
+          <ThemeProvider
+            attribute='class'
+            defaultTheme='system'
+            enableSystem
+            disableTransitionOnChange
+          >
+            <div className="bg-gradient-to-br from-white via-indigo-100 to-white dark:from-black dark:via-rose-950 to:black">
+              {children}
+            </div>
+          </ThemeProvider>
         </AuthProvider>
       </body>
     </html>

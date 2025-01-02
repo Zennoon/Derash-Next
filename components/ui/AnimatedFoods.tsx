@@ -31,7 +31,7 @@ const AnimatedFoods = () => {
   }, [])
 
   return (
-    <div ref={containerRef} className="hidden lg:flex items-start justify-between bg-gradient-to-r from-indigo-50 to-purple-200 flex-1 p-6">
+    <div ref={containerRef} className="hidden lg:flex items-start justify-between flex-1 p-6">
       {foodImages.map((image, i) => (
         <Image src={image.href} key={i} width='48' height='48' className="food-image" alt={image.label} />
       ))}

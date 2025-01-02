@@ -1,7 +1,7 @@
 'use server';
 import prisma from '@/prisma/client';
 import bcrypt from 'bcrypt';
-import { UserSchema } from "./schemas";
+import { DriverSchema, UserSchema } from "./schemas";
 import { redirect } from 'next/navigation';
 import { Resend } from 'resend';
 import { generateAuthToken } from '../utils';
@@ -11,12 +11,12 @@ const resend = new Resend(process.env['RESEND_API_KEY']);
 
 export type CustomerManagerState = {
   errors?: {
-    firstName?: string[] | undefined,
-    lastName?: string[] | undefined,
-    email?: string[] | undefined,
-    password?: string[] | undefined,
-    phoneNum?: string[] | undefined,
-    profilePic?: string[] | undefined
+    firstName?: string[] | undefined;
+    lastName?: string[] | undefined;
+    email?: string[] | undefined;
+    password?: string[] | undefined;
+    phoneNum?: string[] | undefined;
+    profilePic?: string[] | undefined;
   };
   message?: string | null;
   values?: {
@@ -25,6 +25,29 @@ export type CustomerManagerState = {
     email: string | undefined;
     password: string | undefined;
     phoneNum: string | undefined;
+  }
+}
+
+export type DriverState = {
+  errors?: {
+    firstName?: string[] | undefined;
+    lastName?: string[] | undefined;
+    email?: string[] | undefined;
+    password?: string[] | undefined;
+    phoneNum?: string[] | undefined;
+    licenseNum?: string[] | undefined;
+    carDescription?: string[] | undefined;
+    profilePic?: string[] | undefined;
+  };
+  message?: string | null;
+  values?: {
+    firstName: string | undefined;
+    lastName: string | undefined;
+    email: string | undefined;
+    password: string | undefined;
+    phoneNum: string | undefined;
+    licenseNum: string | undefined;
+    carDescription?: string | undefined;
   }
 }
 
@@ -41,9 +64,9 @@ export async function createCustomer(prevState: CustomerManagerState, formData: 
   if (!validationFields.success) {
     return {
       errors: validationFields.error.flatten().fieldErrors,
-      message: 'Missing fields. Failed to register customer',
+      message: 'Missing fields. Failed to register customer.',
       values
-    }
+    };
   }
   const { firstName, lastName, email, password, phoneNum } = validationFields.data;
   
@@ -150,6 +173,79 @@ export async function createManager(prevState: CustomerManagerState, formData: F
     return {
       errors: {},
       message: 'An error occurred. Failed to register manager',
+      values
+    }
+  }
+  redirect('/authenticate/sent');
+}
+
+export async function createDriver(prevState: DriverState, formData: FormData) {
+  const values = {
+    firstName: formData.get('firstName')?.toString(),
+    lastName: formData.get('lastName')?.toString(),
+    email: formData.get('email')?.toString(),
+    password: formData.get('password')?.toString(),
+    phoneNum: formData.get('phoneNum')?.toString(),
+    licenseNum: formData.get('licenseNum')?.toString(),
+    carDescription: formData.get('carDescription')?.toString()
+  };
+  const validationFields = DriverSchema.safeParse(values);
+
+  if (!validationFields.success) {
+    return {
+      errors: validationFields.error.flatten().fieldErrors,
+      message: 'Missing fields. Failed to register driver.',
+      values
+    };
+  }
+
+  const { firstName, lastName, email, password, phoneNum, licenseNum, carDescription } = validationFields.data;
+
+  const existingUser = await prisma.user.findFirst({
+    where: {
+      email
+    }
+  });
+
+  if (existingUser) {
+    return {
+      errors: {
+        email: ['This email is already registered.']
+      },
+      message: 'The email is already registered.',
+      values
+    }
+  }
+
+  const hashedPassword = await bcrypt.hash(password, 10);
+
+  try {
+    const user = await prisma.user.create({
+      data: {
+        firstName,
+        lastName,
+        email,
+        password: hashedPassword,
+        phoneNum
+      }
+    });
+
+    const driver = await prisma.driver.create({
+      data: {
+        userId: user.id,
+        licenseNum,
+        carDescription,
+        rating: {
+          numRating: 1,
+          totalRating: 5
+        }
+      }
+    });
+    await sendAuthEmail(email, firstName);
+  } catch (error) {
+    return {
+      errors: {},
+      message: 'An error occurred. Failed to register driver',
       values
     }
   }

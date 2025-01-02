@@ -20,7 +20,7 @@ const AnimatedRestaurant = () => {
     })
   }, []);
   return (
-    <div className="hidden lg:flex items-center justify-center bg-gradient-to-r from-indigo-50 to-purple-200 flex-1 p-6">
+    <div className="hidden lg:flex items-center justify-center flex-1 p-6">
       <div className='relative w-48 flex justify-center'>
         <Image src='/restaurant-cartoon.png' width='200' height='200' alt='Cartoon Restaurant' className='restaurant-image -mr-14' />
         <Image src='/restaurant-cartoon.png' width='200' height='200' alt='Cartoon Restaurant' className='restaurant-image z-2' />

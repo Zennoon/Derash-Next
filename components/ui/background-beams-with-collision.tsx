@@ -74,9 +74,6 @@ export const BackgroundBeamsWithCollision = ({
         // h-screen if you want bigger
         className
       )}
-      style={{
-        background: 'radial-gradient(circle, rgba(13,13,13,1) 0%, rgba(57,16,16,1) 0%, rgba(23,22,22,1) 100%, rgba(49,64,68,1) 100%)'
-      }}
     >
       {beams.map((beam) => (
         <CollisionMechanism
