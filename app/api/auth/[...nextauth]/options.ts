@@ -22,6 +22,7 @@ export const options: NextAuthOptions = {
       clientSecret: process.env['GITHUB_CLIENT_SECRET'] || '',
     }),
     Credentials({
+      name: 'Credentials',
       credentials: {
         email: {
           label: 'Email',
@@ -37,9 +38,8 @@ export const options: NextAuthOptions = {
       async authorize(credentials) {
         const parsedCredentials = z.object({
           email: z.string().email(),
-          password: z.string().min(6),
+          password: z.string().min(1),
         }).safeParse(credentials);
-
         if (parsedCredentials.success) {
           const { email, password } = parsedCredentials.data;
           const user = await prisma.user.findFirst({
@@ -59,9 +59,11 @@ export const options: NextAuthOptions = {
             if (passwordMatch) {
               return user;
             };
+            throw new Error('Password');
           }
+          throw new Error('Email');
         }
-        return null;
+        throw new Error('Invalid');
       }
     })
   ],
@@ -79,7 +81,7 @@ export const options: NextAuthOptions = {
           return `/authenticate?email=${dbUser.email}`
         }
       }
-      return false; 
+      return '/login?error=Authenticationfailed'; 
     },
 
     redirect({ url, baseUrl }) {

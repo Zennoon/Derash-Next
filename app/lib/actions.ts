@@ -5,6 +5,7 @@ import { DriverSchema, UserSchema } from "./schemas";
 import { redirect } from 'next/navigation';
 import { Resend } from 'resend';
 import { generateAuthToken } from '../utils';
+import { signIn } from 'next-auth/react';
 import DerashAuthEmail from '@/components/emails/AuthTokenTemplate';
 
 const resend = new Resend(process.env['RESEND_API_KEY']);

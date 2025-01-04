@@ -11,7 +11,7 @@ const RedirectPage = async () => {
     else if (session.user.role === 'driver') redirect('/d/dashboard');
     else redirect('/');
   }
-  redirect('/register');
+  redirect('/login');
   return (
     <div>Redirecting</div>
   )

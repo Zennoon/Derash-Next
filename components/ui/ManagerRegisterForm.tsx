@@ -78,8 +78,8 @@ const ManagerRegisterForm = () => {
           </div>
         </div>
         <LitButton className="self-center" type="submit" disabled={pending}>
-          <span>Register</span> 
-          {pending ? <Triangle color="white" height="20" width="20" /> : null}
+          {pending && <Triangle color="white" height="20" width="20" />}
+          Register
         </LitButton>
       </div>
     </form>
