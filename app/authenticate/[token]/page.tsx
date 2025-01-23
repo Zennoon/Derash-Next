@@ -29,7 +29,7 @@ const ValidateAuthTokenPage = async (props: {
   return (
     <div className='flex flex-col items-center gap-5 p-20 bg-transparent/5 rounded-lg backdrop-blur-sm border border-n-4'>
       <h5 className='h5'>The token has expired, or is invalid.</h5>
-      <p className='text-gray-400'>Enter your email to resend the authentication email.</p>
+      <p className='text-gray-600 dark:text-gray-400'>Enter your email to resend the authentication email.</p>
       <ResendAuthForm />
     </div>
   )

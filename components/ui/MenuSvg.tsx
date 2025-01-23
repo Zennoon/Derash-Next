@@ -1,6 +1,17 @@
+'use client';
+import { useTheme } from "next-themes";
+
 const MenuSvg = ({ openNavigation }: {
   openNavigation: boolean
 }) => {
+  const { theme } = useTheme();
+  let fill = '';
+
+  if (window.matchMedia('(prefers-color-scheme: dark)')) {
+    fill = 'white';
+  } else {
+    fill = 'black';
+  }
   return (
     <svg
       className="overflow-visible"
@@ -14,7 +25,7 @@ const MenuSvg = ({ openNavigation }: {
         width="20"
         height="2"
         rx="1"
-        fill="white"
+        fill={`${theme === 'dark' ? 'white' : (theme === 'system' ? fill : 'black')}`}
         transform={`rotate(${openNavigation ? "45" : "0"})`}
       />
       <rect
@@ -23,7 +34,7 @@ const MenuSvg = ({ openNavigation }: {
         width="20"
         height="2"
         rx="1"
-        fill="white"
+        fill={`${theme === 'dark' ? 'white' : (theme === 'system' ? fill : 'black')}`}
         transform={`rotate(${openNavigation ? "-45" : "0"})`}
       />
     </svg>

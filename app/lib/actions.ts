@@ -5,8 +5,10 @@ import { DriverSchema, UserSchema } from "./schemas";
 import { redirect } from 'next/navigation';
 import { Resend } from 'resend';
 import { generateAuthToken } from '../utils';
-import { signIn } from 'next-auth/react';
 import DerashAuthEmail from '@/components/emails/AuthTokenTemplate';
+import { getServerSession } from 'next-auth';
+import { options } from '../api/auth/[...nextauth]/options';
+import { get } from 'http';
 
 const resend = new Resend(process.env['RESEND_API_KEY']);
 
@@ -259,6 +261,7 @@ export async function sendAuthEmail(email: string, firstName: string) {
   if (!token) {
     return null;
   }
+  console.log(token);
   try {
     await resend.emails.send({
       from: 'Acme <onboarding@resend.dev>',
@@ -267,6 +270,7 @@ export async function sendAuthEmail(email: string, firstName: string) {
       react: DerashAuthEmail({userFirstname: firstName, token})
     });
   } catch (error) {
+    console.log(error)
     return null;
   }
 }

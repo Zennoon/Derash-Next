@@ -1,7 +1,14 @@
+import { Award, CookingPot, Gauge, History, ListOrdered } from "lucide-react";
+
 export const navItems = [
   {
     label: 'Home',
     href: '/'
+  },
+  {
+    label: 'Dashboard',
+    href: '/redirect',
+    signedInOnly: true
   },
   {
     label: 'About',
@@ -36,7 +43,7 @@ export const navItems = [
     href: '/api/auth/signout',
     onlyMobile: true,
     signedInOnly: true
-  }
+  },
 ];
 
 export const accountTypes = [
@@ -127,3 +134,58 @@ export const authProviders = [
     icon: '/twitter-icon.png'
   }
 ];
+
+export const managerSidebarItems = [
+  {
+    label: 'Dashboard',
+    href: '/m/dashboard',
+    icon: Gauge
+  },
+  {
+    label: 'Orders',
+    href: '/m/orders',
+    icon: ListOrdered
+  },
+  {
+    label: 'Restaurants',
+    href: '/m/restaurants',
+    icon: CookingPot
+  },
+  {
+    label: 'Leaderboard',
+    href: '/m/leaderboard',
+    icon: Award
+  },
+  {
+    label: 'History',
+    href: '/m/history',
+    icon: History
+  }
+];
+
+export const timeSpans = [
+  {
+    label: 'Today',
+    queryKey: 'today'
+  },
+  {
+    label: 'This week',
+    queryKey: 'weekly'
+  },
+  {
+    label: 'This month',
+    queryKey: 'monthly'
+  },
+  {
+    label: 'This half year',
+    queryKey: 'semiAnnual'
+  },
+  {
+    label: 'This year',
+    queryKey: 'annual'
+  },
+  {
+    label: 'All time',
+    queryKey: 'allTime'
+  }
+]

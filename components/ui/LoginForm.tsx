@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { redirect, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { BackgroundBeamsWithCollision } from './background-beams-with-collision'
 import LitButton from './LitButton'
 import Google from '../icons/Google'
@@ -11,7 +11,6 @@ import { signIn } from 'next-auth/react'
 import StyledLogo from './StyledLogo'
 import Link from 'next/link'
 import { Triangle } from 'react-loader-spinner'
-import { set } from 'zod'
 
 const LoginForm = () => {
   const [errors, setErrors] = useState({
@@ -78,7 +77,7 @@ const LoginForm = () => {
   return (
     <div className='w-full min-h-screen'>
       <BackgroundBeamsWithCollision>
-        <div className='min-w-[25%] flex flex-col gap-4 px-8 py-4 md:py-6 backdrop-blur-sm border border-gray-300 dark:border-n-2/50 rounded-lg'>
+        <div className='min-w-[25%] flex flex-col gap-4 px-8 py-4 md:py-6 bg-transparent/5 backdrop-blur-sm border border-gray-300 dark:border-n-2/50 rounded-lg'>
           <h3 className='h5 md:h4 font-light'>Welcome back to{' '}
             <Link href='/'><StyledLogo /></Link>!</h3>
           <p className='font-light'>Login to your account</p>
@@ -153,6 +152,7 @@ const LoginForm = () => {
               }}><Github /> Sign in with Github</LitButton>              
             </div>
           </div>
+          <p className='self-center dark:text-gray-300'>Don't have an account? <Link className="text-indigo-500 hover:text-purple-500 dark:text-rose-400 dark:hover:text-rose-300 transition-colors duration-100 font-semibold" href='/register'>Sign up</Link>.</p>
         </div>
       </BackgroundBeamsWithCollision>
     </div>

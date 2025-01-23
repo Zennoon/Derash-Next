@@ -9,14 +9,12 @@ const ResendAuthForm = () => {
   const [email, setEmail] = useState('');
   const router = useRouter();
   const handleClick = async () => {
-    // redirect(`/authenticate?email=${email}`);
     router.replace(`/authenticate?email=${email}`);
-    // useRouter().push(`/authenticate?email=${email}`);
   }
 
   return (
     <form className='flex flex-col gap-2 items-stretch'>
-      <input type="email" id="email" name="email" placeholder='johnDoe@email.com' className='p-2 rounded-sm ring-0 focus:outline-none focus:outline-1 focus:outline-n-3' onChange={(e) => setEmail(e.target.value)}  />
+      <input type="email" id="email" name="email" placeholder='johnDoe@email.com' className='bg-white transition-all p-2 dark:bg-transparent border dark:border-gray-700 dark:text-gray-200 p-1 rounded-md outline-none focus:outline-indigo-900 dark:focus:outline-rose-400' onChange={(e) => setEmail(e.target.value)}  />
       <LitButton className='p-1' onClick={handleClick}>
         Resend authentication email
       </LitButton>

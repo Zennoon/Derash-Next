@@ -15,9 +15,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="w-full h-full">
       <body
-        className={`${dosis.className} antialiased w-full h-full min-h-full overflow-x-hidden`}
+        className={`${dosis.className} antialiased w-full overflow-x-hidden flex flex-col bg-gray-100 dark:bg-gray-900`}
       >
         <AuthProvider>
           <ThemeProvider

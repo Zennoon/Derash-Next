@@ -6,6 +6,14 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body {
+  @apply h-full p-0 m-0
+}
+
+#__next {
+  @apply flex flex-col min-h-full
+}
+
 :root {
   --font-sora: "Sora", sans-serif;
   --font-code: "Source Code Pro", monospace;

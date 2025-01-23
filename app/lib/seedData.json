@@ -1,0 +1,308 @@
+{
+    "restaurants": [
+        {
+            "restaurant_name": "Golden Dragon Buffet",
+            "latitude": 25.6775595,
+            "longitude": -100.2596935,
+            "colorScheme": "BLACK"
+        }, {
+            "restaurant_name": "The Spice Route",
+            "latitude": 45.1099574,
+            "longitude": 40.2950699,
+            "colorScheme": "YELLOW"
+        }, {
+            "restaurant_name": "The Hungry Bear",
+            "latitude": 16.7702095,
+            "longitude": -93.3791405,
+            "colorScheme": "ROSE"
+        }, {
+            "restaurant_name": "Cafe Luna",
+            "latitude": 29.866818,
+            "longitude": 121.570383,
+            "colorScheme": "YELLOW"
+        }, {
+            "restaurant_name": "Taste of India",
+            "latitude": 15.2699767,
+            "longitude": -12.8658649,
+            "colorScheme": "PURPLE"
+        }, {
+            "restaurant_name": "Mama Mia's Pizzeria",
+            "latitude": 9.7361006,
+            "longitude": 123.9333482,
+            "colorScheme": "ROSE"
+        }, {
+            "restaurant_name": "Sizzling Grill",
+            "latitude": 26.3841358,
+            "longitude": 127.804829,
+            "colorScheme": "PURPLE"
+        }, {
+            "restaurant_name": "Bella Italia Ristorante",
+            "latitude": 14.4670027,
+            "longitude": 47.2752844,
+            "colorScheme": "GREEN"
+        }, {
+            "restaurant_name": "The Spice Route",
+            "latitude": 2.0259109,
+            "longitude": -75.994964,
+            "colorScheme": "BLACK"
+        }, {
+            "restaurant_name": "Mama Mia's Pizzeria",
+            "latitude": -6.582711,
+            "longitude": 110.6786933,
+            "colorScheme": "GREEN"
+        }
+    ],
+    "dishes": [
+        {
+            "name": "BBQ Ribs",
+            "description": "Warm and comforting",
+            "ingredients": "soy sauce",
+            "price": 47.2
+        }, {
+            "name": "Lemon Herb Chicken",
+            "description": "Sweet and savory",
+            "ingredients": "cumin",
+            "price": 36.4
+        }, {
+            "name": "Chicken Alfredo",
+            "description": "Smoky and charred",
+            "ingredients": "parsley",
+            "price": 98.23
+        }, {
+            "name": "Spaghetti Bolognese",
+            "description": "Buttery and smooth",
+            "ingredients": "onions",
+            "price": 59.4
+        }, {
+            "name": "Garlic Butter Shrimp",
+            "description": "Savory and tender",
+            "ingredients": "olive oil",
+            "price": 57.13
+        }, {
+            "name": "Sesame Beef",
+            "description": "Sweet and savory",
+            "ingredients": "green onions",
+            "price": 27.81
+        }, {
+            "name": "Baked Ziti",
+            "description": "Sweet and savory",
+            "ingredients": "garlic",
+            "price": 5.14
+        }, {
+            "name": "Pineapple Fried Rice",
+            "description": "Savory and satisfying",
+            "ingredients": "cumin",
+            "price": 61.29
+        }, {
+            "name": "Ratatouille",
+            "description": "Spicy and flavorful",
+            "ingredients": "olive oil",
+            "price": 95.71
+        }, {
+            "name": "Cajun Shrimp Pasta",
+            "description": "Satisfying and hearty",
+            "ingredients": "nuts",
+            "price": 29.31
+        }, {
+            "name": "Ratatouille",
+            "description": "Fresh and zesty",
+            "ingredients": "salmon",
+            "price": 94.89
+        }, {
+            "name": "Eggplant Parmesan",
+            "description": "Sweet and tangy",
+            "ingredients": "quinoa",
+            "price": 31.83
+        }, {
+            "name": "Chicken Parmesan",
+            "description": "Light and refreshing",
+            "ingredients": "tomatoes",
+            "price": 16.46
+        }, {
+            "name": "Beef Stroganoff",
+            "description": "Bold and spicy",
+            "ingredients": "bell peppers",
+            "price": 11.97
+        }, {
+            "name": "Hawaiian BBQ Chicken",
+            "description": "Satisfying and wholesome",
+            "ingredients": "salt",
+            "price": 93.57
+        }, {
+            "name": "Pineapple Fried Rice",
+            "description": "Hearty and filling",
+            "ingredients": "onions",
+            "price": 6.33
+        }, {
+            "name": "Lemon Pepper Salmon",
+            "description": "Savory and fragrant",
+            "ingredients": "chives",
+            "price": 51.77
+        }, {
+            "name": "Caprese Salad",
+            "description": "Spicy and bold",
+            "ingredients": "nuts",
+            "price": 64.91
+        }, {
+            "name": "Hawaiian BBQ Chicken",
+            "description": "Creamy and rich",
+            "ingredients": "lime",
+            "price": 77.59
+        }, {
+            "name": "Greek Gyro Bowl",
+            "description": "Satisfying and hearty",
+            "ingredients": "garlic",
+            "price": 58.04
+        }, {
+            "name": "Beef Tacos",
+            "description": "Crunchy and crispy",
+            "ingredients": "milk",
+            "price": 74.19
+        }, {
+            "name": "Eggplant Parmesan",
+            "description": "Sweet and savory",
+            "ingredients": "tahini",
+            "price": 83.38
+        }, {
+            "name": "Steak Fajitas",
+            "description": "Flavorful and aromatic",
+            "ingredients": "garlic",
+            "price": 10.62
+        }, {
+            "name": "Lemon Pepper Salmon",
+            "description": "Robust and satisfying",
+            "ingredients": "onions",
+            "price": 57.19
+        }, {
+            "name": "Lentil Soup",
+            "description": "Fresh and zesty",
+            "ingredients": "tomatoes",
+            "price": 59.01
+        }, {
+            "name": "Pasta Primavera",
+            "description": "Robust and satisfying",
+            "ingredients": "parsley",
+            "price": 52.91
+        }, {
+            "name": "Buffalo Chicken Wraps",
+            "description": "Satisfying and hearty",
+            "ingredients": "cumin",
+            "price": 32.89
+        }, {
+            "name": "Orange Glazed Salmon",
+            "description": "Flavorful and aromatic",
+            "ingredients": "lime",
+            "price": 94.68
+        }, {
+            "name": "Shrimp Scampi",
+            "description": "Fresh and crisp",
+            "ingredients": "lime",
+            "price": 75.97
+        }, {
+            "name": "Greek Gyro Bowl",
+            "description": "Savory and rich",
+            "ingredients": "bell peppers",
+            "price": 99.21
+        }, {
+            "name": "Ratatouille",
+            "description": "Succulent and flavorful",
+            "ingredients": "tomatoes",
+            "price": 97.49
+        }, {
+            "name": "Pesto Pasta",
+            "description": "Satisfying and hearty",
+            "ingredients": "dill",
+            "price": 9.84
+        }, {
+            "name": "Chicken Parmesan",
+            "description": "Creamy and indulgent",
+            "ingredients": "flour",
+            "price": 44.21
+        }, {
+            "name": "Chicken Enchiladas",
+            "description": "Savory and hearty",
+            "ingredients": "cheddar cheese",
+            "price": 22.91
+        }, {
+            "name": "Cajun Shrimp Pasta",
+            "description": "Smokey and savory",
+            "ingredients": "olive oil",
+            "price": 23.8
+        }, {
+            "name": "Pineapple Fried Rice",
+            "description": "Tangy and citrusy",
+            "ingredients": "pasta",
+            "price": 22.37
+        }, {
+            "name": "BBQ Ribs",
+            "description": "Tender and succulent",
+            "ingredients": "onions",
+            "price": 74.03
+        }, {
+            "name": "Lobster Mac and Cheese",
+            "description": "Exquisite and aromatic",
+            "ingredients": "cherry tomatoes",
+            "price": 25.27
+        }, {
+            "name": "Chicken Enchiladas",
+            "description": "Smokey and savory",
+            "ingredients": "parsley",
+            "price": 80.17
+        }, {
+            "name": "Lemon Pepper Salmon",
+            "description": "Rich and decadent",
+            "ingredients": "red onion",
+            "price": 48.6
+        }, {
+            "name": "Honey Garlic Chicken",
+            "description": "Tangy and citrusy",
+            "ingredients": "garlic",
+            "price": 54.34
+        }, {
+            "name": "Chicken Parmesan",
+            "description": "Tender and flavorful",
+            "ingredients": "baking powder",
+            "price": 12.78
+        }, {
+            "name": "Cajun Shrimp Pasta",
+            "description": "Savory and zesty",
+            "ingredients": "garlic",
+            "price": 51.74
+        }, {
+            "name": "Greek Gyro Bowl",
+            "description": "Savory and fragrant",
+            "ingredients": "chickpeas",
+            "price": 60.55
+        }, {
+            "name": "Hawaiian BBQ Chicken",
+            "description": "Savory and hearty",
+            "ingredients": "parmesan cheese",
+            "price": 75.0
+        }, {
+            "name": "Coconut Curry Shrimp",
+            "description": "Savory and sweet",
+            "ingredients": "pepper",
+            "price": 72.26
+        }, {
+            "name": "Beef Tacos",
+            "description": "Tender and flavorful",
+            "ingredients": "chocolate chips",
+            "price": 22.11
+        }, {
+            "name": "Beef and Broccoli Stir-Fry",
+            "description": "Sweet and savory",
+            "ingredients": "tomatoes",
+            "price": 90.83
+        }, {
+            "name": "Cajun Shrimp Pasta",
+            "description": "Savory and tender",
+            "ingredients": "cilantro",
+            "price": 64.75
+        }, {
+            "name": "Vegetarian Chili",
+            "description": "Light and refreshing",
+            "ingredients": "rice",
+            "price": 23.71
+        }
+    ]  
+}

@@ -69,22 +69,30 @@ model Restaurant {
   tags        Tag[]
   dishes      Dish[]
   orders      Order[]
+  colorScheme Color    @default(INDIGO)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
 
 model Order {
-  id           String     @id @default(auto()) @map("_id") @db.ObjectId
-  customer     Customer   @relation(fields: [customerId], references: [id])
-  customerId   String     @db.ObjectId
-  restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
-  restaurantId String     @db.ObjectId
-  driver       Driver     @relation(fields: [driverId], references: [id])
-  driverId     String     @db.ObjectId
-  made         Boolean    @default(false)
-  delivered    Boolean    @default(false)
-  createdAt    DateTime   @default(now())
-  updatedAt    DateTime   @updatedAt
+  id                       String      @id @default(auto()) @map("_id") @db.ObjectId
+  customer                 Customer    @relation(fields: [customerId], references: [id])
+  customerId               String      @db.ObjectId
+  restaurant               Restaurant  @relation(fields: [restaurantId], references: [id])
+  restaurantId             String      @db.ObjectId
+  driver                   Driver      @relation(fields: [driverId], references: [id])
+  driverId                 String      @db.ObjectId
+  dishes                   OrderDish[]
+  tags                     Tag[]
+  totalPrice               Float
+  location                 Location
+  specialInstructions      String?
+  madeRestaurantConfirm    Boolean     @default(false)
+  madeDriverConfirm        Boolean     @default(false)
+  deliveredCustomerConfirm Boolean     @default(false)
+  deliveredDriverConfirm   Boolean     @default(false)
+  createdAt                DateTime    @default(now())
+  updatedAt                DateTime    @updatedAt
 }
 
 model AuthToken {
@@ -110,15 +118,22 @@ type Rating {
 type Review {
   customerId String @db.ObjectId
   comment    String
+  createdAt  DateTime @default(now())
 }
 
 type Dish {
+  id          String  @db.ObjectId
   name        String
   description String?
   image       String?
   tags        Tag[]
   ingredients String[]
   price       Float
+}
+
+type OrderDish {
+  dish     Dish
+  quantity Int
 }
 
 enum Tag {
@@ -131,4 +146,18 @@ enum Tag {
   Appetizer
   Gluten_Free
   Sea_Food
+  Meat
+  Non_Dairy
+  Dairy
+}
+
+enum Color {
+  RED
+  YELLOW
+  GREEN
+  PURPLE
+  INDIGO
+  BLACK
+  ROSE
+  BLUE
 }
